@@ -1,7 +1,10 @@
 # CSC 231 Course Project
-# Name: Arithmetic Arranger
-# Department: Computer Science
-# Level: 200
+# PROJECT: Arithmetic Arranger
+# AUTHOR: COMPUTER SCIENCE CLASS OF 2018/2019 SESSION
+# DESCRIPTION: Create a function that receives a list of strings that are arithmetic
+# problems and returns the problems arranged vertically and side-by-
+# side. The function should optionally take a second argument. When the
+# second argument is set to `True`, the answers should be displayed.
 
 def arithmetic_arranger(expression, result = False):
     """
