@@ -27,7 +27,7 @@ def arithmetic_arranger(expression, result = False):
     ----    ------    ------    -----
 
     """    
-    if len(expression) > 7:                         # Handling First Error: Function must only accept a maximum of six expressions
+    if len(expression) > 7:                         # Handling First Error: Function must only accept a maximum of seven expressions
         return "Error: Too many problems."
 
     # Empty List objects to hold each line of each expression
