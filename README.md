@@ -66,6 +66,7 @@ Code in `arithmetic_arranger.py`.
 
 >## Acknowlegements
 * ___Osanebi Emmanuel___: Emms wrote the primordal codes upon which the final codes was built on
+* ___Adeoti Warith___:  Warith re-wrote the arithmetic-arranger script to become simpler and concise.
 * ___Ivuelekwa Stephen___: Stepen wrote the script for unit-testing the project to ensure it is working as expected.
 * ___Alatise Oluwaseun___: For excellent management of the project's developement.
 * ___Akinwusi Ifeoluwa___: The Course's Rep and his assistant ___Adisa Christiana___.
