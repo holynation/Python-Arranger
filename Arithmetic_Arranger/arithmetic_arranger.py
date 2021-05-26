@@ -32,10 +32,10 @@ def arithmetic_arranger(expression, result = False):
 
     # Empty List objects to hold each line of each expression
     # There would be a maximum of 4 lines for each expression (i.e if result argument is True)
-    li1 = []        # To hold the first line of each of the expressions (i.e the line containing the first operand)
-    li2 = []        # To hold the second line of each of the expressions (i.e the line containing the operator and second operand)
-    li3 = []        # The third line for underlining (i.e  bunch of horizontal dashes to separate the operands from their result)
-    li4 = []        # Fourth line of  each expression (i.e the result of each of the individual expression)
+    line1 = ""        # To hold the first line of each of the expressions (i.e the line containing the first operand)
+    line2 = ""        # To hold the second line of each of the expressions (i.e the line containing the operator and second operand)
+    line3 = ""        # The third line for underlining (i.e  bunch of horizontal dashes to separate the operands from their result)
+    line4 = ""        # Fourth line of  each expression (i.e the result of each of the individual expression)
     for exp in expression:
         exp = exp.replace(" ", "")                  # Removing all whitespace from expression
 
@@ -50,7 +50,7 @@ def arithmetic_arranger(expression, result = False):
             return "Error: Operator must be '+' or '-'."
 
         # Checking for non-digit operands
-        if (not exp[0].isdigit()) or (not exp[1].isdigit()):    # Third Error handling: Expressions must contain digit operands only
+        if not(exp[0].isdigit() and exp[1].isdigit()):    # Third Error handling: Expressions must contain digit operands only
             return "Error: Numbers must only contain digits."
         
         # Checking for operand with digits greater than six
@@ -63,26 +63,28 @@ def arithmetic_arranger(expression, result = False):
         # Evaluating the arithmetic expression (If the second argument 'result' is True)        
         if result:
             res = str(eval(exp[0] + operator + exp[1]))         # Evaluating the concatenation of the operands and the operator with the 'eval' function
-            li4.append(res.rjust(align))                        # Appending into list the result of the expression with the contained digits rightly-just
+            line4 += res.rjust(align) + "    "                       # Concatenating the result of the expression with the contained digits rightly-just to the string [line4]
         
 
-        li1.append(exp[0].rjust(align))                                                     # Appending into list, first Operand, rightly-just
-        li2.append((operator + (" " * (align - len(exp[1]) - 1)) + exp[1]).rjust(align))    # Appending into list, operator and the second operand, rightly-just
-        li3.append("-" * (align))                                                           # Appending into list, the underlining (bunch of dashes)
+        line1 += exp[0].rjust(align) + "    "                                          # Concatenating to string, first Operand, rightly-just
+        line2 += operator + exp[1].rjust(align - 1) + "    "                           # Concatenating to string, operator and the second operand, rightly-just
+        line3 += "-" * (align) + "    "                                                # Concatenating to string, the underlining (bunch of dashes)
 
     # End of loop    
     
     # Arranging the expression into a single string
 
-    line1 = "    ".join(li1)
-    line2 = "    ".join(li2)        # Joining each element in each line into a string, separated by four whitespaces
-    line3 = "    ".join(li3)
+    line1 = line1.rstrip()
+    line2 = line2.rstrip()       # Removing the last four whitespaces from each line
+    line3 = line3.rstrip()
 
     arranged_string = "\n".join([line1, line2, line3])  # Joining line 1 - 3 into a single string, separated by a newline character
 
     if result:                                          # Adding the fourth line if the result argument is True
-        line4 = "    ".join(li4)
+        line4 = line4.rstrip()
         arranged_string += "\n" + line4 + "\n" + line3
 
     
     return arranged_string          # Returning the arranged string!!!
+
+# print(arithmetic_arranger(["32 + 698", "3801 - 2", "45 + 43", "12356 + 94965"], True))
